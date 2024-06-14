@@ -1,30 +1,44 @@
-.window {
-  position: absolute;
-  width: 300px; /* Default width */
-  height: 200px; /* Default height */
-  border: 1px solid #333;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+/* windows.css */
 
 .window-titlebar {
-  width: 100%;
-  background-color: #0078d7; /* Title bar background color */
-  color: white; /* Title bar text color */
-  padding: 8px;
-  cursor: move; /* Change cursor to indicate draggable area */
+  background-color: #444;
+  color: white;
+  padding: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.window-controls {
+  display: flex;
+}
+
+.window-control-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.window-control-btn img {
+  width: 20px; /* Adjust size as needed */
+  height: 20px;
+}
+
+.window-title {
+  flex: 1; /* Title takes up remaining space */
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+
 .resize-handle {
   position: absolute;
   width: 10px;
   height: 10px;
-  background-color: #ccc;
-  z-index: 10;
-  user-select: none; /* Prevent text selection */
+  background: transparent;
+  z-index: 2;
 }
 
 .resize-top {
