@@ -1,0 +1,55 @@
+/* windows.css */
+
+.window {
+  position: absolute;
+  /* Add other styles for windows as needed */
+}
+
+.window-titlebar {
+  width: 100%;
+  background-color: #0078d7; /* Title bar background color */
+  color: white; /* Title bar text color */
+  padding: 8px;
+  cursor: move; /* Change cursor to indicate draggable area */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.window-title {
+  flex: 1;
+  font-size: 16px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.window-control-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.resize-handle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #ccc;
+  cursor: nwse-resize; /* Change cursor to indicate resize direction */
+  user-select: none; /* Prevent text selection */
+}
+
+.resize-top,
+.resize-bottom,
+.resize-left,
+.resize-right,
+.resize-top-left,
+.resize-top-right,
+.resize-bottom-left,
+.resize-bottom-right {
+  pointer-events: auto; /* Ensure pointer events are active on resize handles */
+}

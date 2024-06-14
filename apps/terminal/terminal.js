@@ -2,7 +2,6 @@
 
 import { getCommands } from './commands/index.js';
 import { addToHistory } from './commands/history.js'; // Import addToHistory function
-import { attachWindowEventHandlers } from './windowManagement.js'; // Import window management functions
 
 document.addEventListener("DOMContentLoaded", async function() {
     const terminalInput = document.getElementById('terminal-input');

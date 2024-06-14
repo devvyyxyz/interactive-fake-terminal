@@ -3,39 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fake OS</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>My Fake OS</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/taskbar.css">
+    <link rel="stylesheet" href="styles/windows.css">
+    <link rel="stylesheet" href="styles/desktop.css">
 </head>
 <body>
-    <!-- OS Background -->
-    <div id="os-background"></div>
-    
-    <!-- Example: Terminal Window -->
-    <div id="terminal-window" class="window">
-        <div class="window-titlebar">
-            <span class="window-title">Terminal</span>
-            <div class="window-controls">
-                <button class="window-control-btn minimize-btn" data-window-id="terminal-window">-</button>
-                <button class="window-control-btn close-btn" data-window-id="terminal-window">x</button>
-            </div>
-        </div>
-        <div id="terminal-container">
-            <div id="output"></div>
-            <input type="text" id="terminal-input" placeholder="Type a command...">
-        </div>
-        <div class="resize-handle resize-top"></div>
-        <div class="resize-handle resize-bottom"></div>
-        <div class="resize-handle resize-left"></div>
-        <div class="resize-handle resize-right"></div>
-        <div class="resize-handle resize-top-left"></div>
-        <div class="resize-handle resize-top-right"></div>
-        <div class="resize-handle resize-bottom-left"></div>
-        <div class="resize-handle resize-bottom-right"></div>
+    <!-- Taskbar -->
+    <div id="taskbar" class="taskbar">
+        <!-- Taskbar icons -->
+        <button class="taskbar-app" id="terminal-icon">Terminal</button>
+        <!-- Add more icons as needed -->
     </div>
 
-    <!-- Add more windows (apps) as needed -->
+    <!-- Desktop -->
+    <div id="desktop">
+        <!-- Windows and other desktop elements will be dynamically added here -->
+    </div>
 
-    <script type="module" src="terminal.js"></script>
-    <script type="module" src="windowManagement.js"></script> <!-- New script for managing windows -->
+    <!-- OS Background -->
+    <div id="os-background"></div>
+
+    <!-- JavaScript files -->
+    <script type="module" src="js/taskbar.js"></script>
+    <script type="module" src="js/terminal.js"></script>
+    <script type="module" src="js/windowManagement.js"></script>
+    <script type="module" src="js/desktop.js"></script>
 </body>
 </html>

@@ -7,25 +7,7 @@ let initialY = 0;
 let initialResizeX = 0;
 let initialResizeY = 0;
 
-export function attachWindowEventHandlers() {
-    const windows = document.querySelectorAll('.window');
-    windows.forEach(window => {
-        const titleBar = window.querySelector('.title-bar');
-        if (titleBar) {
-            titleBar.addEventListener('mousedown', startDrag);
-        }
-
-        const resizeHandles = window.querySelectorAll('.resize-handle');
-        resizeHandles.forEach(handle => {
-            handle.addEventListener('mousedown', startResize);
-        });
-    });
-
-    // Handle mousemove and mouseup events globally for drag and resize
-    document.addEventListener('mousemove', handleMove);
-    document.addEventListener('mouseup', stopInteraction);
-}
-
+// Function to start dragging a window
 function startDrag(event) {
     draggingWindow = this.closest('.window');
     initialX = event.clientX - draggingWindow.offsetLeft;
@@ -33,27 +15,21 @@ function startDrag(event) {
     draggingWindow.style.zIndex = '1000'; // Bring window to front
 }
 
-function handleMove(event) {
-    if (draggingWindow) {
-        draggingWindow.style.left = `${event.clientX - initialX}px`;
-        draggingWindow.style.top = `${event.clientY - initialY}px`;
-    }
-    if (resizingWindow) {
-        handleResize(event);
-    }
+// Function to handle window dragging
+function handleDrag(event) {
+    if (!draggingWindow) return;
+    draggingWindow.style.left = `${event.clientX - initialX}px`;
+    draggingWindow.style.top = `${event.clientY - initialY}px`;
 }
 
-function stopInteraction() {
-    if (draggingWindow) {
-        draggingWindow.style.zIndex = ''; // Reset window z-index
-        draggingWindow = null;
-    }
-    if (resizingWindow) {
-        resizingWindow.style.zIndex = ''; // Reset window z-index
-        resizingWindow = null;
-    }
+// Function to stop dragging a window
+function stopDrag() {
+    if (!draggingWindow) return;
+    draggingWindow.style.zIndex = ''; // Reset window z-index
+    draggingWindow = null;
 }
 
+// Function to start resizing a window
 function startResize(event) {
     resizingWindow = this.closest('.window');
     initialResizeX = event.clientX;
@@ -61,6 +37,7 @@ function startResize(event) {
     resizingWindow.style.zIndex = '1000'; // Bring window to front
 }
 
+// Function to handle window resizing
 function handleResize(event) {
     if (!resizingWindow) return;
 
@@ -86,15 +63,23 @@ function handleResize(event) {
     initialResizeY = event.clientY;
 }
 
-export function centerWindow(window) {
-    const screenWidth = window.screen.width;
-    const screenHeight = window.screen.height;
-    const windowWidth = window.offsetWidth;
-    const windowHeight = window.offsetHeight;
-
-    const left = (screenWidth - windowWidth) / 2;
-    const top = (screenHeight - windowHeight) / 2;
-
-    window.style.left = `${left}px`;
-    window.style.top = `${top}px`;
+// Function to stop resizing a window
+function stopResize() {
+    if (!resizingWindow) return;
+    resizingWindow.style.zIndex = ''; // Reset window z-index
+    resizingWindow = null;
 }
+
+// Event listeners for dragging and resizing
+document.addEventListener('mousedown', function(event) {
+    if (event.target.classList.contains('window-titlebar')) {
+        startDrag(event);
+    } else if (event.target.classList.contains('resize-handle')) {
+        startResize(event);
+    }
+});
+
+document.addEventListener('mousemove', handleDrag);
+document.addEventListener('mousemove', handleResize);
+document.addEventListener('mouseup', stopDrag);
+document.addEventListener('mouseup', stopResize);
