@@ -1,8 +1,10 @@
-/* windows.css */
-
 .window {
   position: absolute;
-  /* Add other styles for windows as needed */
+  width: 300px; /* Default width */
+  height: 200px; /* Default height */
+  border: 1px solid #333;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .window-titlebar {
@@ -16,40 +18,63 @@
   align-items: center;
 }
 
-.window-title {
-  flex: 1;
-  font-size: 16px;
-}
-
-.window-controls {
-  display: flex;
-  gap: 5px;
-}
-
-.window-control-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-}
-
 .resize-handle {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   background-color: #ccc;
-  cursor: nwse-resize; /* Change cursor to indicate resize direction */
+  z-index: 10;
   user-select: none; /* Prevent text selection */
 }
 
-.resize-top,
-.resize-bottom,
-.resize-left,
-.resize-right,
-.resize-top-left,
-.resize-top-right,
-.resize-bottom-left,
+.resize-top {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: ns-resize;
+}
+
+.resize-bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: ns-resize;
+}
+
+.resize-left {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  cursor: ew-resize;
+}
+
+.resize-right {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  cursor: ew-resize;
+}
+
+.resize-top-left {
+  top: 0;
+  left: 0;
+  cursor: nwse-resize;
+}
+
+.resize-top-right {
+  top: 0;
+  right: 0;
+  cursor: nesw-resize;
+}
+
+.resize-bottom-left {
+  bottom: 0;
+  left: 0;
+  cursor: nesw-resize;
+}
+
 .resize-bottom-right {
-  pointer-events: auto; /* Ensure pointer events are active on resize handles */
+  bottom: 0;
+  right: 0;
+  cursor: nwse-resize;
 }

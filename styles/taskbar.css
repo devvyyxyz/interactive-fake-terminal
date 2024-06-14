@@ -1,26 +1,44 @@
-/* taskbar.css */
-
-.taskbar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-  display: flex;
-  justify-content: flex-start;
-  padding: 5px;
+#taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
 }
 
-.taskbar-icon {
-  padding: 8px 15px;
-  background-color: transparent;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  margin-right: 10px;
+.taskbar-app {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 5px;
 }
 
-.taskbar-icon:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.taskbar-app img {
+    width: 24px;
+    height: 24px;
+}
+
+.taskbar-clock {
+    margin-left: auto;
+    padding-right: 10px;
+    text-align: right;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.taskbar-clock time {
+    font-size: 12px;
+}
+
+.taskbar-clock date {
+    font-size: 10px;
 }

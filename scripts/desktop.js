@@ -4,6 +4,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to open a new window
     function openWindow(title) {
         const desktop = document.getElementById('desktop');
+        const newWindowButton = document.getElementById('open-new-window');
+
+        if (newWindowButton) {
+            newWindowButton.addEventListener('click', () => {
+                // Code to open a new window
+            });
+        } else {
+            console.error('Element with id "open-new-window" not found.');
+        }
 
         // Create window elements
         const window = document.createElement('div');
