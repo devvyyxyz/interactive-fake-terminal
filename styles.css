@@ -1,0 +1,51 @@
+body {
+  font-family: monospace;
+  background-color: #272822;
+  color: #f8f8f2;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#terminal {
+  background-color: #1e1f1c;
+  border-radius: 5px;
+  padding: 10px;
+  width: 80%;
+  max-width: 800px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+#output {
+  padding: 10px;
+  white-space: pre-wrap;
+}
+
+#input-line {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+#prompt {
+  margin-right: 5px;
+  color: #f92672;
+}
+
+#terminal-input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: monospace;
+  color: #f8f8f2;
+  font-size: 1em;
+}
+
+#terminal-input:focus {
+  outline: none;
+}
+
