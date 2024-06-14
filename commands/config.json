@@ -1,0 +1,15 @@
+{
+  "commands": [
+    "help.js",
+    "greet.js",
+    "clear.js",
+    "echo.js",
+    "date.js",
+    "ping.js",
+    "top.js",
+    "man.js",
+    "history.js",
+    "curl.js",
+    "theme.js"
+  ]
+}

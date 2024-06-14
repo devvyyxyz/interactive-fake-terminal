@@ -1,20 +1,20 @@
 // commands/help.js
 
+import { getCommands } from './index.js';
+
 export const name = 'help';
 export const description = 'Display list of available commands';
 
-export function execute() {
-    const commands = [
-        { command: 'help', description: 'Display list of available commands' },
-        { command: 'greet', description: 'Greet the user' },
-        { command: 'date', description: 'Display current date and time' },
-        { command: 'clear', description: 'Clear the terminal screen' },
-        { command: 'style', description: 'Change terminal style (Available presets: default, dark, light)' }
-        // Add more commands as needed
-    ];
-
-    // Format the list of commands
-    const commandList = commands.map(cmd => `${cmd.command}: ${cmd.description}`).join('\n');
-
-    return commandList;
+export async function execute() {
+    try {
+        const commands = await getCommands();
+        let output = 'Available commands:\n\n';
+        for (const command in commands) {
+            output += `${command}: ${commands[command].description}\n`;
+        }
+        return output.trim();
+    } catch (error) {
+        console.error('Error retrieving commands:', error);
+        return 'Error retrieving commands. Please try again later.';
+    }
 }

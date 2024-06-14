@@ -3,18 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fake Terminal</title>
+    <title>Fake OS</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="terminal">
-        <div id="output"></div>
-        <div id="input-line">
-            <span id="prompt">>></span>
-            <input type="text" id="terminal-input" autofocus>
+    <!-- OS Background -->
+    <div id="os-background"></div>
+    
+    <!-- Example: Terminal Window -->
+    <div id="terminal-window" class="window">
+        <div class="window-titlebar">
+            <span class="window-title">Terminal</span>
+            <div class="window-controls">
+                <button class="window-control-btn minimize-btn" data-window-id="terminal-window">-</button>
+                <button class="window-control-btn close-btn" data-window-id="terminal-window">x</button>
+            </div>
         </div>
+        <div id="terminal-container">
+            <div id="output"></div>
+            <input type="text" id="terminal-input" placeholder="Type a command...">
+        </div>
+        <div class="resize-handle resize-top"></div>
+        <div class="resize-handle resize-bottom"></div>
+        <div class="resize-handle resize-left"></div>
+        <div class="resize-handle resize-right"></div>
+        <div class="resize-handle resize-top-left"></div>
+        <div class="resize-handle resize-top-right"></div>
+        <div class="resize-handle resize-bottom-left"></div>
+        <div class="resize-handle resize-bottom-right"></div>
     </div>
 
+    <!-- Add more windows (apps) as needed -->
+
     <script type="module" src="terminal.js"></script>
+    <script type="module" src="windowManagement.js"></script> <!-- New script for managing windows -->
 </body>
 </html>

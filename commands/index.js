@@ -1,26 +1,30 @@
 // commands/index.js
 
-// Function to dynamically import all command modules
-async function importAllCommands() {
-    const modules = await Promise.all([
-        import('./help.js'),
-        import('./greet.js'),
-        import('./date.js'),
-        import('./clear.js'),
-        import('./style.js'),
-        // Add more commands as needed
-    ]);
+let commandsPromise;
 
-    const commands = modules.reduce((acc, module) => {
-        const { name, description, execute } = module;
-        if (name && description && execute) {
-            acc[name] = { description, execute };
+// Function to import all commands and return as a promise
+async function importAllCommands() {
+    if (!commandsPromise) {
+        commandsPromise = fetch('/commands/config.json')
+            .then(response => response.json())
+            .then(config => {
+                const modules = config.commands.map(command => import(`./${command}`));
+                return Promise.all(modules);
+            });
+    }
+    return commandsPromise;
+}
+
+// Function to get the commands object after they are loaded
+export async function getCommands() {
+    const modules = await importAllCommands();
+    const commands = {};
+
+    modules.forEach(module => {
+        if (module.name && module.description && module.execute) {
+            commands[module.name] = { description: module.description, execute: module.execute };
         }
-        return acc;
-    }, {});
+    });
 
     return commands;
 }
-
-// Export all commands
-export const commands = importAllCommands();

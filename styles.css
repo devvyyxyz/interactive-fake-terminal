@@ -1,51 +1,132 @@
 body {
-  font-family: monospace;
-  background-color: #272822;
-  color: #f8f8f2;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Windows-like font */
+  background-color: #ffffff; /* Windows Terminal dark background */
+  overflow: hidden; /* Prevent scrolling */
 }
 
-#terminal {
-  background-color: #1e1f1c;
-  border-radius: 5px;
-  padding: 10px;
-  width: 80%;
-  max-width: 800px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
+.window {
+  position: absolute;
+  /* Other styles for window */
 }
+
+.window-titlebar {
+  width: 100%;
+  background-color: #0078d7; /* Title bar background color */
+  color: white; /* Title bar text color */
+  padding: 8px;
+  cursor: move; /* Change cursor to indicate draggable area */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.window-title {
+  flex: 1;
+  font-size: 16px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.window-control-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.resize-handle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #ccc;
+  cursor: nwse-resize; /* Change cursor to indicate resize direction */
+  user-select: none; /* Prevent text selection */
+}
+
+.resize-top,
+.resize-bottom,
+.resize-left,
+.resize-right,
+.resize-top-left,
+.resize-top-right,
+.resize-bottom-left,
+.resize-bottom-right {
+  pointer-events: auto; /* Ensure pointer events are active on resize handles */
+}
+
+.window-title {
+  font-size: 14px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.window-control-btn {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.window-control-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Hover background color */
+}
+
+#os-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/backgrounds/desktop1.jpg'); /* Replace with your image */
+  background-size: cover;
+  z-index: -1;
+  opacity: 0.7;
+}
+
 
 #output {
+  border: 1px solid #333333; /* Terminal border */
+  background-color: #1e1e1e; /* Terminal background color */
+  color: #cccccc; /* Text color */
   padding: 10px;
-  white-space: pre-wrap;
-}
-
-#input-line {
-  display: flex;
-  align-items: center;
-  padding: 5px;
-}
-
-#prompt {
-  margin-right: 5px;
-  color: #f92672;
+  font-family: 'Consolas', 'Courier New', monospace; /* Fixed-width font */
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-y: scroll;
 }
 
 #terminal-input {
-  flex: 1;
-  background-color: transparent;
   border: none;
-  outline: none;
-  font-family: monospace;
-  color: #f8f8f2;
-  font-size: 1em;
+  background-color: #1e1e1e; /* Input area background color */
+  color: #cccccc; /* Text color */
+  padding: 10px;
+  font-family: 'Consolas', 'Courier New', monospace; /* Fixed-width font */
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 #terminal-input:focus {
-  outline: none;
+  outline: none; /* Remove focus outline */
 }
 
+#terminal-input::placeholder {
+  color: #888888; /* Placeholder text color */
+}
+
+#output::-webkit-scrollbar {
+  width: 8px; /* Scrollbar width */
+}
+
+#output::-webkit-scrollbar-thumb {
+  background-color: #555555; /* Scrollbar thumb color */
+  border-radius: 4px; /* Rounded scrollbar thumb */
+}
