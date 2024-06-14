@@ -28,11 +28,9 @@ function initializeWindow(appWindow) {
     const titleBar = appWindow.querySelector('.window-titlebar');
 
     if (!titleBar) {
-        console.error("Title bar not found in the window element.", appWindow);
+        console.error("Title bar not found in the window element.");
         return;
     }
-
-    console.log("Title bar found:", titleBar);
 
     titleBar.addEventListener('mousedown', startDrag);
     appWindow.addEventListener('mousedown', () => focusWindow(appWindow));
@@ -47,11 +45,9 @@ export function makeWindowDraggableAndResizable(windowElement) {
     const resizeHandles = windowElement.querySelectorAll('.resize-handle');
 
     if (!titleBar) {
-        console.error("Title bar not found in the window element.", windowElement);
+        console.error("Title bar not found in the window element.");
         return;
     }
-
-    console.log("Title bar found:", titleBar);
 
     titleBar.addEventListener('mousedown', startDrag);
     windowElement.addEventListener('mousedown', () => focusWindow(windowElement));
